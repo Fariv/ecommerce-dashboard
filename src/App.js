@@ -6,6 +6,7 @@ import Signin from "./Signin";
 import AddProduct from "./AddProduct";
 import UpdateProduct from "./UpdateProduct";
 import ProductList from "./ProductList";
+import ProductShow from './ProductShow';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path="/update">
             <Protected Component={UpdateProduct} />
+          </Route>
+          <Route path="/product-show/:id">
+            <Protected Component={ProductShow} />
           </Route>
           <Route path="/signup">
             <Signup />

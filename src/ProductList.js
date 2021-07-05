@@ -1,9 +1,11 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Header from "./Header";
 import { Button, Table } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 function ProductList() {
     
+    const history = useHistory();
     const [response, setResponse] = useState("");
     useEffect(() => {
         fetchData();
@@ -39,6 +41,12 @@ function ProductList() {
         result = await result.json();
         setResponse(result);
     }
+
+    function showSingleProductPage(e, id) {
+        
+        e.preventDefault();
+        history.push("/product-show/" + id);
+    }
     
     console.log(response);
     return (
@@ -61,19 +69,19 @@ function ProductList() {
                         response.data ?
                         response.data.map((item, i) => 
                             <tr key={i}>
-                                <td align="left">{item.name}</td>
-                                <td>{
+                                <td style={{ cursor: "pointer" }} align="left" onClick={(e) => showSingleProductPage(e, item.id)}>{item.name}</td>
+                                <td style={{ cursor: "pointer" }} onClick={(e) => showSingleProductPage(e, item.id)}>{
                                     item.get_files && item.get_files.length ?
                                     (<img width="196" src={"http://127.0.0.1:8000/" + item.get_files[0].product_filepath} alt="product_image" />) :
                                     null
                                 }
                                 </td>
-                                <td align="left">
+                                <td style={{ cursor: "pointer" }} align="left" onClick={(e) => showSingleProductPage(e, item.id)}>
                                     {item.description.split('\n').map(function (v, key) {
                                         return <Fragment key={key}>{v}<br/></Fragment>
                                     })}
                                 </td>
-                                <td align="right">{item.price}</td>
+                                <td style={{ cursor: "pointer" }} align="right" onClick={(e) => showSingleProductPage(e, item.id)}>{item.price}</td>
                                 <td><Button variant="info" onClick={(e) => editRecord(e, item.id)}>Edit</Button></td>
                                 <td><Button variant="danger" onClick={(e) => deleteRecord(e, item.id)}>Delete</Button></td>
                             </tr>
