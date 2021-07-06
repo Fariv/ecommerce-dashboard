@@ -16,7 +16,7 @@ function App() {
           <Route path="/add">
             <Protected Component={AddProduct} />
           </Route>
-          <Route path="/update">
+          <Route path="/update/:id">
             <Protected Component={UpdateProduct} />
           </Route>
           <Route path="/product-show/:id">

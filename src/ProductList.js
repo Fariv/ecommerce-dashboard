@@ -14,7 +14,7 @@ function ProductList() {
     async function editRecord(e, id) {
         
         e.preventDefault();
-        console.log(id);
+        history.push("/update/" + id);
     }
 
     async function deleteRecord(e, id) {

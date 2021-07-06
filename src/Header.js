@@ -23,7 +23,6 @@ function Header() {
                             <>
                                 <Link className="nav-link" to="/">Products</Link>
                                 <Link className="nav-link" to="/add">Add Product</Link>
-                                <Link className="nav-link" to="/update">Update product</Link>
                             </>
                             :
                             <>
