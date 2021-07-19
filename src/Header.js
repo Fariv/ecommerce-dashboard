@@ -9,6 +9,12 @@ function Header() {
         history.push("/signup");
     }
 
+    function profile(e) {
+
+        e.preventDefault();
+        history.push("/profile");
+    }
+
     const history = useHistory();
 
     let data = localStorage.getItem("user_info");
@@ -35,7 +41,7 @@ function Header() {
                     localStorage.getItem("user_info") ?
                     (<Nav>
                         <NavDropdown title={data.username}>
-                            <NavDropdown.Item>
+                            <NavDropdown.Item onClick={profile}>
                                 Profile
                             </NavDropdown.Item>
                             <NavDropdown.Item onClick={signOut}>

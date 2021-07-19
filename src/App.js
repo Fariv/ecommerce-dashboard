@@ -7,6 +7,7 @@ import AddProduct from "./AddProduct";
 import UpdateProduct from "./UpdateProduct";
 import ProductList from "./ProductList";
 import ProductShow from './ProductShow';
+import Profile from "./profile";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/product-show/:id">
             <Protected Component={ProductShow} />
+          </Route>
+          <Route path="/profile">
+            <Protected Component={Profile} />
           </Route>
           <Route path="/signup">
             <Signup />
